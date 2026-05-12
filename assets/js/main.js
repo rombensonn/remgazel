@@ -86,7 +86,7 @@
             if (locked) return;
 
             const phone = form.querySelector('input[name="phone"]');
-            const consent = form.querySelector('input[name="consent"]');
+            const requiredCheckboxes = Array.from(form.querySelectorAll('input[type="checkbox"][required]'));
             const submit = form.querySelector('button[type="submit"]');
 
             if (!phone || !isPhoneValid(phone.value)) {
@@ -95,9 +95,10 @@
                 return;
             }
 
-            if (consent && !consent.checked) {
-                setMessage(form, 'Подтвердите согласие на обработку персональных данных.', 'error');
-                consent.focus();
+            const uncheckedConsent = requiredCheckboxes.find((checkbox) => !checkbox.checked);
+            if (uncheckedConsent) {
+                setMessage(form, 'Отметьте оба согласия, чтобы отправить заявку.', 'error');
+                uncheckedConsent.focus();
                 return;
             }
 

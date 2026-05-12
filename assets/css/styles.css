@@ -132,7 +132,7 @@ summary {
     height: 42px;
     place-items: center;
     color: #fff;
-    font-weight: 800;
+    font-weight: 700;
     background: linear-gradient(135deg, var(--green), var(--primary));
     border-radius: 8px;
 }
@@ -173,7 +173,7 @@ summary {
 
 .header-phone {
     color: var(--graphite);
-    font-weight: 800;
+    font-weight: 700;
     white-space: nowrap;
 }
 
@@ -204,7 +204,7 @@ summary {
     padding: 12px 18px;
     border: 1px solid transparent;
     border-radius: var(--radius);
-    font-weight: 750;
+    font-weight: 700;
     line-height: 1.2;
     cursor: pointer;
     transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
@@ -266,7 +266,7 @@ summary {
     margin: 0 0 12px;
     color: var(--primary);
     font-size: 13px;
-    font-weight: 850;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -329,7 +329,7 @@ h3 {
     border: 1px solid #bbf7d0;
     border-radius: 999px;
     font-size: 14px;
-    font-weight: 750;
+    font-weight: 700;
 }
 
 .hero-cta {
@@ -369,7 +369,7 @@ h3 {
 .hero-facts a {
     display: block;
     margin-top: 6px;
-    font-weight: 850;
+    font-weight: 700;
     line-height: 1.35;
 }
 
@@ -399,7 +399,7 @@ h3 {
 .vehicle-card,
 .diagnostic-list,
 .route-line,
-.hero-image {
+.hero-lead-form {
     position: relative;
     z-index: 1;
 }
@@ -418,7 +418,7 @@ h3 {
     background: #86efac;
     border-radius: 999px;
     font-size: 13px;
-    font-weight: 850;
+    font-weight: 700;
     white-space: nowrap;
 }
 
@@ -523,16 +523,19 @@ h3 {
     border: 1px solid rgba(147, 197, 253, 0.24);
     border-radius: var(--radius);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
     text-align: center;
 }
 
-.hero-image {
-    width: 100%;
-    height: auto;
-    margin-top: 16px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+.hero-lead-form {
+    margin-top: 18px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: none;
+}
+
+.hero-lead-form textarea {
+    min-height: 86px;
 }
 
 .section-head {
@@ -577,7 +580,7 @@ h3 {
     display: inline-flex;
     margin-top: 8px;
     color: var(--primary);
-    font-weight: 850;
+    font-weight: 700;
 }
 
 .service-grid {
@@ -705,25 +708,65 @@ h3 {
     position: relative;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    gap: 14px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
+.process-route::before {
+    content: "";
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 52px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--green), var(--primary), var(--amber));
+    border-radius: 999px;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.18);
+}
+
 .process-route li {
-    min-height: 190px;
-    padding: 20px;
+    position: relative;
+    min-height: 210px;
+    padding: 82px 18px 20px;
+    background:
+        linear-gradient(180deg, #ffffff, #f8fafc),
+        radial-gradient(circle at 50% 34px, rgba(37, 99, 235, 0.12), transparent 58px);
+    border: 1px solid #dbe4ef;
+    border-radius: 12px;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.process-route li::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 37px;
+    width: 28px;
+    height: 28px;
+    transform: translateX(-50%);
     background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border: 7px solid var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.08);
+}
+
+.process-route li:nth-child(2n)::before {
+    border-color: var(--green);
+}
+
+.process-route li:nth-child(5)::before {
+    border-color: var(--amber);
 }
 
 .process-route span {
     display: inline-flex;
-    margin-bottom: 18px;
+    margin-bottom: 8px;
     color: var(--primary);
-    font-weight: 900;
+    font-weight: 700;
+    letter-spacing: 0;
 }
 
 .process-route p {
@@ -800,7 +843,7 @@ h3 {
     gap: 7px;
     color: #374151;
     font-size: 14px;
-    font-weight: 750;
+    font-weight: 700;
 }
 
 .lead-form input,
@@ -835,6 +878,12 @@ h3 {
     grid-template-columns: 20px 1fr;
     align-items: start;
     font-weight: 600;
+}
+
+.consent a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .consent input {
@@ -891,7 +940,7 @@ summary {
     min-height: 58px;
     padding: 16px 20px;
     cursor: pointer;
-    font-weight: 850;
+    font-weight: 700;
 }
 
 details p {
@@ -931,63 +980,22 @@ details p {
 .contact-card dt {
     color: var(--muted);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
 .contact-card dd {
     margin: 4px 0 0;
-    font-weight: 750;
+    font-weight: 700;
 }
 
-.map-placeholder {
-    position: relative;
+.map-frame {
+    width: 100%;
     min-height: 470px;
-    overflow: hidden;
     background: #dce7f0;
     border: 1px solid var(--line);
     border-radius: 12px;
     box-shadow: var(--shadow);
-}
-
-.map-grid {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(30deg, transparent 46%, rgba(37, 99, 235, 0.28) 47%, rgba(37, 99, 235, 0.28) 50%, transparent 51%),
-        linear-gradient(120deg, transparent 42%, rgba(22, 163, 74, 0.24) 43%, rgba(22, 163, 74, 0.24) 47%, transparent 48%),
-        linear-gradient(#cbd5e1 1px, transparent 1px),
-        linear-gradient(90deg, #cbd5e1 1px, transparent 1px);
-    background-size: 220px 220px, 260px 260px, 44px 44px, 44px 44px;
-}
-
-.map-pin {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: min(320px, calc(100% - 32px));
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-.map-pin strong,
-.map-pin span,
-.map-pin a {
-    display: block;
-}
-
-.map-pin span {
-    margin: 8px 0 14px;
-    color: var(--muted);
-}
-
-.map-pin a {
-    color: var(--primary);
-    font-weight: 850;
 }
 
 .site-footer {
@@ -1025,7 +1033,7 @@ details p {
     background: rgba(255, 255, 255, 0.10);
     border-radius: var(--radius);
     font-size: 14px;
-    font-weight: 850;
+    font-weight: 700;
 }
 
 .mobile-cta a:first-child {
@@ -1216,7 +1224,7 @@ details p {
         padding: 18px;
     }
 
-    .map-placeholder {
+    .map-frame {
         min-height: 360px;
     }
 

@@ -106,7 +106,7 @@ $faqSchema = [
     <meta property="og:image" content="<?= e($siteUrl) ?>/assets/img/og-remgazel.webp">
     <meta property="og:locale" content="ru_RU">
     <meta name="theme-color" content="#1F2937">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316A34A'/%3E%3Ctext x='32' y='40' font-size='24' text-anchor='middle' font-family='Arial' font-weight='800' fill='white'%3E%D0%A0%D0%93%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316A34A'/%3E%3Ctext x='32' y='40' font-size='24' text-anchor='middle' font-family='Arial' font-weight='700' fill='white'%3E%D0%A0%D0%93%3C/text%3E%3C/svg%3E">
     <link rel="preload" href="assets/img/hero-service.webp" as="image">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script type="application/ld+json"><?= json_encode($localBusinessSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
@@ -152,7 +152,6 @@ $faqSchema = [
                     <span>Специализация на Газелях и ГАЗ</span>
                     <span>Ежедневно до 22:00</span>
                     <span>Запчасти под заказ</span>
-                    <span>Расчёт до начала работ</span>
                 </div>
                 <div class="hero-cta">
                     <a class="btn btn-primary" href="#lead">Рассчитать ремонт</a>
@@ -199,7 +198,22 @@ $faqSchema = [
                     <span>Ремонт</span>
                     <span>В работу</span>
                 </div>
-                <img class="hero-image" src="assets/img/hero-service.webp" width="720" height="420" alt="Инженерная панель диагностики коммерческого транспорта РемГазель">
+                <form class="lead-form hero-lead-form" data-lead-form novalidate>
+                    <h3>Заявка на расчёт ремонта</h3>
+                    <label>Телефон *<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 900 000-00-00"></label>
+                    <label>Марка авто<input name="car" type="text" maxlength="80" placeholder="Газель, ГАЗон NEXT, УАЗ"></label>
+                    <label>Что случилось<textarea name="issue" maxlength="1000" placeholder="Например: стук в ходовой, перегрев, КПП"></textarea></label>
+                    <input type="hidden" name="contact_method" value="Звонок">
+                    <input type="hidden" name="page_url" value="">
+                    <input type="hidden" name="utm_source" value="">
+                    <input type="hidden" name="utm_medium" value="">
+                    <input type="hidden" name="utm_campaign" value="">
+                    <label class="hp-field">Сайт<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+                    <label class="consent"><input type="checkbox" name="consent_data" value="1" required> Даю согласие на обработку персональных данных для обработки моей заявки и обратной связи.</label>
+                    <label class="consent"><input type="checkbox" name="consent_policy" value="1" required> Подтверждаю, что ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a>.</label>
+                    <button class="btn btn-primary" type="submit">Отправить заявку</button>
+                    <p class="form-message" role="status" aria-live="polite"></p>
+                </form>
             </div>
         </div>
     </section>
@@ -361,6 +375,8 @@ $faqSchema = [
                 <input type="hidden" name="utm_medium" value="">
                 <input type="hidden" name="utm_campaign" value="">
                 <label class="hp-field">Сайт<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+                <label class="consent"><input type="checkbox" name="consent_data" value="1" required> Даю согласие на обработку персональных данных для обработки моей заявки и обратной связи.</label>
+                <label class="consent"><input type="checkbox" name="consent_policy" value="1" required> Подтверждаю, что ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a>.</label>
                 <button class="btn btn-primary" type="submit">Отправить заявку мастеру</button>
                 <p class="form-message" role="status" aria-live="polite"></p>
             </form>
@@ -412,7 +428,8 @@ $faqSchema = [
                         <option value="Telegram">Telegram</option>
                     </select>
                 </label>
-                <label class="consent"><input type="checkbox" name="consent" value="1" required> Согласен на обработку персональных данных для связи по заявке</label>
+                <label class="consent"><input type="checkbox" name="consent_data" value="1" required> Даю согласие на обработку персональных данных для обработки моей заявки и обратной связи.</label>
+                <label class="consent"><input type="checkbox" name="consent_policy" value="1" required> Подтверждаю, что ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a>.</label>
                 <input type="hidden" name="page_url" value="">
                 <input type="hidden" name="utm_source" value="">
                 <input type="hidden" name="utm_medium" value="">
@@ -441,14 +458,14 @@ $faqSchema = [
                     <a class="btn btn-secondary" href="tel:<?= e($business['phone_href']) ?>">Позвонить</a>
                 </div>
             </div>
-            <div class="map-placeholder reveal" role="img" aria-label="Карта проезда к автосервису РемГазель в Мытищах">
-                <div class="map-grid" aria-hidden="true"></div>
-                <div class="map-pin">
-                    <strong>РемГазель</strong>
-                    <span><?= e($business['address']) ?></span>
-                    <a target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=<?= urlencode($business['address']) ?>">Открыть в Яндекс Картах</a>
-                </div>
-            </div>
+            <iframe
+                class="map-frame reveal"
+                title="Яндекс Карта: РемГазель, <?= e($business['address']) ?>"
+                src="https://yandex.ru/map-widget/v1/?text=<?= urlencode('РемГазель, ' . $business['address']) ?>&z=16"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+            </iframe>
         </div>
     </section>
 </main>

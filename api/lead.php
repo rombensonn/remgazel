@@ -166,9 +166,15 @@ $utmMedium = clean_value($payload['utm_medium'] ?? '', 120);
 $utmCampaign = clean_value($payload['utm_campaign'] ?? '', 120);
 $vehicleStatus = clean_value($payload['vehicle_status'] ?? '', 40);
 $preferredTime = clean_value($payload['preferred_time'] ?? '', 80);
+$consentData = clean_value($payload['consent_data'] ?? '', 10);
+$consentPolicy = clean_value($payload['consent_policy'] ?? '', 10);
 
 if ($phone === '' || !is_phone_valid($phone)) {
     respond(false, 'Укажите корректный телефон, чтобы мастер мог связаться с вами.', 422);
+}
+
+if ($consentData !== '1' || $consentPolicy !== '1') {
+    respond(false, 'Отметьте оба согласия на обработку персональных данных.', 422);
 }
 
 if ($name === '' && $car === '' && $issue === '') {
