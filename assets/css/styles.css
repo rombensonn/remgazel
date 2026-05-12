@@ -383,6 +383,14 @@ h3 {
     overflow: hidden;
 }
 
+.form-panel {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
 .hero-panel::before {
     content: "";
     position: absolute;
@@ -393,6 +401,10 @@ h3 {
     background-size: 26px 26px;
     mask-image: linear-gradient(180deg, #000, transparent 92%);
     pointer-events: none;
+}
+
+.form-panel::before {
+    display: none;
 }
 
 .panel-top,
@@ -528,10 +540,11 @@ h3 {
 }
 
 .hero-lead-form {
-    margin-top: 18px;
-    padding: 18px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: none;
+    margin-top: 0;
+    padding: 26px;
+    background: #ffffff;
+    border: 1px solid #dbe4ef;
+    box-shadow: 0 24px 58px rgba(15, 23, 42, 0.14);
 }
 
 .hero-lead-form textarea {
@@ -551,7 +564,17 @@ h3 {
 }
 
 .symptom-grid {
+    position: relative;
+    counter-reset: symptom;
     grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 12px;
+    background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 42%),
+        linear-gradient(180deg, #ffffff, #eef4fb);
+    border: 1px solid #dbe4ef;
+    border-radius: 14px;
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
 }
 
 .symptom-card,
@@ -568,8 +591,42 @@ h3 {
 }
 
 .symptom-card {
+    position: relative;
     min-height: 220px;
-    padding: 20px;
+    padding: 22px 18px 20px 70px;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+    border-color: #d8e2ef;
+    box-shadow: none;
+    counter-increment: symptom;
+}
+
+.symptom-card::before {
+    content: counter(symptom, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    color: #fff;
+    background: var(--graphite);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.symptom-card::after {
+    content: "";
+    position: absolute;
+    left: 35px;
+    top: 66px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(var(--green), rgba(37, 99, 235, 0.12));
+    border-radius: 999px;
 }
 
 .symptom-card p {
@@ -578,8 +635,14 @@ h3 {
 
 .symptom-card a {
     display: inline-flex;
+    min-height: 36px;
+    align-items: center;
     margin-top: 8px;
+    padding: 7px 10px;
     color: var(--primary);
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
     font-weight: 700;
 }
 
@@ -846,7 +909,7 @@ h3 {
     font-weight: 700;
 }
 
-.lead-form input,
+.lead-form input:not([type="checkbox"]),
 .lead-form textarea,
 .lead-form select {
     width: 100%;
@@ -877,7 +940,15 @@ h3 {
 .consent {
     grid-template-columns: 20px 1fr;
     align-items: start;
+    column-gap: 10px;
+    row-gap: 0;
     font-weight: 600;
+    line-height: 1.45;
+}
+
+.consent span {
+    display: block;
+    min-width: 0;
 }
 
 .consent a {
@@ -888,8 +959,11 @@ h3 {
 
 .consent input {
     width: 18px;
+    height: 18px;
     min-height: 18px;
     margin-top: 3px;
+    padding: 0;
+    flex: 0 0 auto;
 }
 
 .hp-field {
