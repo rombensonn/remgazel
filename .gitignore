@@ -1,0 +1,6 @@
+storage/rate_limit.json
+storage/*.out.log
+storage/*.err.log
+storage/php-server*.log
+storage/screenshots/
+*.tmp
